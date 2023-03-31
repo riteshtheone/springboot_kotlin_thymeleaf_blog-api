@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/category")
 class CategoryController(@Autowired private val categoryService: CategoryService) {
 
     // POST -> create category
@@ -35,6 +35,6 @@ class CategoryController(@Autowired private val categoryService: CategoryService
     fun getCategory(@PathVariable("categoryId") categoryId: Int): ResponseEntity<CategoryBean> = ResponseEntity<CategoryBean>(this.categoryService.getCategoryById(categoryId), HttpStatus.OK)
 
     // GET -> get all category
-    @GetMapping("/")
+    @GetMapping("/all")
     fun getAllCategories(): ResponseEntity<List<CategoryBean>> =  ResponseEntity<List<CategoryBean>>(this.categoryService.getAllCategories(), HttpStatus.OK)
 }

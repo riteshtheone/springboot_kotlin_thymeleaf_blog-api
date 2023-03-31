@@ -22,7 +22,7 @@ class CategoryServiceImpl(@Autowired private val categoryRepository: CategoryRep
         val category: Category = this.categoryRepository.findById(categoryId).orElseThrow { ResourceNotFoundException("Category", "Id", categoryId) }
         category.categoryTitle = categoryBean.categoryTitle
         category.categoryDescription = categoryBean.categoryDescription
-        return this.modelMapper.map(category, CategoryBean::class.java)
+        return this.modelMapper.map(this.categoryRepository.save(category), CategoryBean::class.java)
     }
 
     override fun getCategoryById(categoryId: Int): CategoryBean = this.modelMapper.map(this.categoryRepository.findById(categoryId).orElseThrow { ResourceNotFoundException("Category", "Id", categoryId) }, CategoryBean::class.java)

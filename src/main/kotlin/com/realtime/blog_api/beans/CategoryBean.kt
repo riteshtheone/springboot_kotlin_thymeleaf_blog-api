@@ -3,10 +3,11 @@ package com.realtime.blog_api.beans
 import jakarta.validation.constraints.NotBlank
 
 class CategoryBean {
-    var categoryId = -1
+
+    var categoryId: Int = -1
 
     @NotBlank
-    var categoryTitle = ""
+    lateinit var categoryTitle: String
 
-    var categoryDescription = ""
+    lateinit var categoryDescription: String
 }

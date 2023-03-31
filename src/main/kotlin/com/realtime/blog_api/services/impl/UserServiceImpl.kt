@@ -23,6 +23,7 @@ class UserServiceImpl(@Autowired private val userRepository: UserRepository, @Au
         user.name = userBean.name
         user.email = userBean.email
         user.password = userBean.password
+        user.about = userBean.about
         return this.getUserBeanByUser(this.userRepository.save(user))
     }
 
