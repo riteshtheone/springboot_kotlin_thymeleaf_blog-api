@@ -1,23 +1,15 @@
 //package com.realtime.blog_api.temp;
 //
-//import com.realtime.blog_api.bean.UserBean;
-//import com.realtime.blog_api.dao.UserRepository;
-//import com.realtime.blog_api.entity.User;
+//import com.realtime.blog_api.entities.Post;
+//import jakarta.persistence.CascadeType;
+//import jakarta.persistence.OneToMany;
 //
+//import java.util.ArrayList;
 //import java.util.List;
-//import java.util.stream.Collectors;
 //
-//public class Temp {
+//public class Temp{
 //
-//    private UserRepository userRepository;
-//    public List<UserBean> getAllUsers(){
-//        List<User> users = this.userRepository.findAll();
-//        List<UserBean> userBeans = users.stream().map(user -> this.getUserBeanByUser(user)).collect(Collectors.toList());
-//        return userBeans;
-//    }
+//    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+//    List<Post> posts = new ArrayList<Post>();
 //
-//    public UserBean getUserBeanByUser(User user){
-//        UserBean userBean = new UserBean();
-//        return userBean;
-//    }
 //}
