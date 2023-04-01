@@ -7,11 +7,8 @@ import org.springframework.context.annotation.Bean
 
 @SpringBootApplication
 class SpringbootKotlinThymeleafBlogApiApplication {
-
 	@Bean
-	fun modelMapper(): ModelMapper {
-		return ModelMapper()
-	}
+	fun modelMapper(): ModelMapper =  ModelMapper()
 }
 
 fun main(args: Array<String>) {
