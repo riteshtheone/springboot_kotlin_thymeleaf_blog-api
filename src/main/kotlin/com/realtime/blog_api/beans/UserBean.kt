@@ -5,20 +5,20 @@ import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.Size
 
 class UserBean {
-    var id: Int = -1
+    var id: Int = 0
 
     @NotBlank
-    lateinit var name: String
+    var name: String = ""
 
     @Email
     @NotBlank
-    lateinit var email: String
+    var email: String = ""
 
     @NotBlank
     @Size(min = 2, max = 24)
-    lateinit var password: String
+    var password: String = ""
 
     @NotBlank
-    lateinit var about: String
+    var about: String = ""
 
 }

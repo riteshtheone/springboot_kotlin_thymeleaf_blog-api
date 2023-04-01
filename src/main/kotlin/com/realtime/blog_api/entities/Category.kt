@@ -9,15 +9,15 @@ class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "category_id")
-    val categoryId = -1
+    val categoryId = 0
 
     @Column(unique = true, nullable = false, length = 100)
-    lateinit var categoryTitle: String
+    var categoryTitle: String = ""
 
     @Column
-    lateinit var categoryDescription: String
+    var categoryDescription: String = ""
 
-//    @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
-//    var posts: List<Post> = ArrayList()
+    @OneToMany(mappedBy = "category", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    var posts: List<Post> = ArrayList()
 
 }

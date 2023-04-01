@@ -4,10 +4,10 @@ import jakarta.validation.constraints.NotBlank
 
 class CategoryBean {
 
-    var categoryId: Int = -1
+    var categoryId: Int = 0
 
     @NotBlank
-    lateinit var categoryTitle: String
+    var categoryTitle: String = ""
 
-    lateinit var categoryDescription: String
+    var categoryDescription: String = ""
 }
