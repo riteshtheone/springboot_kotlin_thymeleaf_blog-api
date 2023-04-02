@@ -1,7 +1,7 @@
 package com.realtime.blog_api.controllers
 
 import com.realtime.blog_api.beans.CategoryBean
-import com.realtime.blog_api.payloads.ApiResponce
+import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.services.CategoryService
 
 import jakarta.validation.Valid
@@ -25,9 +25,9 @@ class CategoryController(@Autowired private val categoryService: CategoryService
 
     // DELETE -> delete category
     @DeleteMapping("/{categoryId}")
-    fun deleteCategory(@PathVariable("categoryId") categoryId: Int): ResponseEntity<ApiResponce> {
+    fun deleteCategory(@PathVariable("categoryId") categoryId: Int): ResponseEntity<ApiResponse> {
         this.categoryService.deleteCategory(categoryId)
-        return ResponseEntity<ApiResponce>(ApiResponce("category is deleted successfully!!", true), HttpStatus.OK)
+        return ResponseEntity<ApiResponse>(ApiResponse("category is deleted successfully!!", true), HttpStatus.OK)
     }
 
     // GET -> get category

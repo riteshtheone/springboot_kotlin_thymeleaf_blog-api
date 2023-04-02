@@ -1,1 +1,1 @@
-# pringboot_kotlin_thymeleaf_blog-api
+# Springboot_kotlin_thymeleaf_blog-api

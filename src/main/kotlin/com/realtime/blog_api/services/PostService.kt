@@ -1,6 +1,7 @@
 package com.realtime.blog_api.services
 
 import com.realtime.blog_api.beans.PostBean
+import com.realtime.blog_api.payloads.PostResponse
 
 interface PostService {
 
@@ -14,7 +15,7 @@ interface PostService {
     fun getPostById(postId: Int): PostBean
 
     //  get all
-    fun getAllPost(pageNumber: Int, pageSize: Int): List<PostBean>
+    fun getAllPost(pageNumber: Int, pageSize: Int): PostResponse
 
     //  delete
     fun deletePost(postId: Int)

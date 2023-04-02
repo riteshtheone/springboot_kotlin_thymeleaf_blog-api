@@ -1,7 +1,7 @@
 package com.realtime.blog_api.controllers
 
 import com.realtime.blog_api.beans.UserBean
-import com.realtime.blog_api.payloads.ApiResponce
+import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.services.UserService
 
 import jakarta.validation.Valid
@@ -32,9 +32,9 @@ class UserController(@Autowired private val userService: UserService) {
 
     // DELETE -> delete user
     @DeleteMapping("/{userId}")
-    fun deleteUser(@PathVariable("userId") userId:Int) : ResponseEntity<ApiResponce> {
+    fun deleteUser(@PathVariable("userId") userId:Int) : ResponseEntity<ApiResponse> {
         this.userService.deleteUser(userId)
-        return ResponseEntity<ApiResponce>(ApiResponce("user is deleted successfully!!", true), HttpStatus.OK)
+        return ResponseEntity<ApiResponse>(ApiResponse("user is deleted successfully!!", true), HttpStatus.OK)
     }
 
     // GET -> get user

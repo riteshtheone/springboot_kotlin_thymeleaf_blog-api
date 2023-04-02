@@ -1,6 +1,6 @@
 package com.realtime.blog_api.exceptions
 
-import com.realtime.blog_api.payloads.ApiResponce
+import com.realtime.blog_api.payloads.ApiResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.FieldError
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice
 class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException::class)
-    fun resourceNotFoundExceptionHandler(exception: ResourceNotFoundException): ResponseEntity<ApiResponce> {
-        return ResponseEntity(ApiResponce(exception.message.toString(), false), HttpStatus.NOT_FOUND)
+    fun resourceNotFoundExceptionHandler(exception: ResourceNotFoundException): ResponseEntity<ApiResponse> {
+        return ResponseEntity(ApiResponse(exception.message.toString(), false), HttpStatus.NOT_FOUND)
     }
 
     @ExceptionHandler(MethodArgumentNotValidException::class)
