@@ -33,7 +33,7 @@ class Post {
     @JoinColumn(name = "user_id")
     var user: User = User()
 
-    @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "post", cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     var comments: Set<Comment> = HashSet()
 
 }

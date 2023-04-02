@@ -10,5 +10,5 @@ class PostBean {
      var postDate: Date = Date()
      var category: CategoryBean = CategoryBean()
      var user: UserBean = UserBean()
-//     var comments: Set<CommentBean> = HashSet()
+     var comments: Set<CommentBean> = HashSet()
 }
