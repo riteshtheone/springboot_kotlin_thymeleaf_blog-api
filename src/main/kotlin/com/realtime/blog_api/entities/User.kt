@@ -25,4 +25,12 @@ class User {
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var posts: List<Post> = ArrayList()
 
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_role",
+        joinColumns = [JoinColumn(name = "user", referencedColumnName = "user_id")],
+        inverseJoinColumns = [JoinColumn(name = "role", referencedColumnName = "id")]
+    )
+    var roles: Set<Role> = HashSet()
+
 }
