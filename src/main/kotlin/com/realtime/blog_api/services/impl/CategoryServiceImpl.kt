@@ -14,7 +14,9 @@ import org.springframework.stereotype.Service
 import java.util.stream.Collectors
 
 @Service
-class CategoryServiceImpl(@Autowired private val categoryRepository: CategoryRepository, @Autowired private val modelMapper: ModelMapper): CategoryService {
+class CategoryServiceImpl(
+    @Autowired private val categoryRepository: CategoryRepository,
+    @Autowired private val modelMapper: ModelMapper): CategoryService {
 
     override fun createCategory(categoryBean: CategoryBean): CategoryBean = this.modelMapper.map(this.categoryRepository.save(this.modelMapper.map(categoryBean, Category::class.java)), CategoryBean::class.java)
 

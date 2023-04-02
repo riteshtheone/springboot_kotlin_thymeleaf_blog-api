@@ -15,7 +15,7 @@ interface PostService {
     fun getPostById(postId: Int): PostBean
 
     //  get all
-    fun getAllPost(pageNumber: Int, pageSize: Int): PostResponse
+    fun getAllPost(pageNumber: Int, pageSize: Int, sortBy: String, sortDir: String): PostResponse
 
     //  delete
     fun deletePost(postId: Int)

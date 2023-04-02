@@ -1,6 +1,7 @@
 package com.realtime.blog_api.controllers
 
 import com.realtime.blog_api.beans.PostBean
+import com.realtime.blog_api.config.AppConstants
 import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.payloads.PostResponse
 import com.realtime.blog_api.services.PostService
@@ -35,9 +36,11 @@ class PostController(@Autowired private val postService: PostService) {
     // GET -> get all post
     @GetMapping("/post/all")
     fun getAllPosts(
-        @RequestParam(value = "pageNumber", defaultValue = "0", required = false) pageNumber: Int,
-        @RequestParam(value = "pageSize", defaultValue = "3", required = false) pageSize: Int
-        ) : ResponseEntity<PostResponse> = ResponseEntity<PostResponse>(this.postService.getAllPost(pageNumber, pageSize), HttpStatus.OK)
+        @RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) pageNumber: Int,
+        @RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) pageSize: Int,
+        @RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required = false) sortBy: String,
+        @RequestParam(value = "sortDir", defaultValue = AppConstants.SORT_DIR, required = false) sortDir: String,
+        ) : ResponseEntity<PostResponse> = ResponseEntity<PostResponse>(this.postService.getAllPost(pageNumber, pageSize, sortBy, sortDir), HttpStatus.OK)
 
     // get post by user id
     @GetMapping("/user/{userId}/post")
@@ -46,5 +49,8 @@ class PostController(@Autowired private val postService: PostService) {
     // get post by category id
     @GetMapping("/category/{categoryId}/post")
     fun getPostByCategory(@PathVariable categoryId: Int): ResponseEntity<List<PostBean>> = ResponseEntity<List<PostBean>>(this.postService.getPostByCategory(categoryId), HttpStatus.OK)
+
+    @GetMapping("/post/search/{keyword}")
+    fun searchByKeyword(@PathVariable keyword: String): ResponseEntity<List<PostBean>> = ResponseEntity<List<PostBean>>(this.postService.searchPosts(keyword), HttpStatus.OK)
 
 }
