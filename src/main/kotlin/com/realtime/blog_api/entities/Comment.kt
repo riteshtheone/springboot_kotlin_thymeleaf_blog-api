@@ -16,4 +16,8 @@ class Comment {
     @ManyToOne
     @JoinColumn(name = "post_id")
     var post: Post = Post()
+
+//    @ManyToMany
+//    @JoinColumn(name = "user_id")
+//    var user: User = User()
 }

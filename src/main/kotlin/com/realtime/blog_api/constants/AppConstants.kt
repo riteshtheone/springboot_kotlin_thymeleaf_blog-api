@@ -1,4 +1,4 @@
-package com.realtime.blog_api.config
+package com.realtime.blog_api.constants
 
 class AppConstants {
     companion object {

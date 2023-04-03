@@ -1,7 +1,7 @@
 package com.realtime.blog_api.controllers
 
 import com.realtime.blog_api.beans.PostBean
-import com.realtime.blog_api.config.AppConstants
+import com.realtime.blog_api.constants.AppConstants
 import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.payloads.PostResponse
 import com.realtime.blog_api.services.PostService

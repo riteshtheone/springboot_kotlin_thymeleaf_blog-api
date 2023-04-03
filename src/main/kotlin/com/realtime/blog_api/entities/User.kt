@@ -27,7 +27,7 @@ class User {
 
     @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
     @JoinTable(
-        name = "user_role",
+        name = "user_roles",
         joinColumns = [JoinColumn(name = "user", referencedColumnName = "user_id")],
         inverseJoinColumns = [JoinColumn(name = "role", referencedColumnName = "id")]
     )

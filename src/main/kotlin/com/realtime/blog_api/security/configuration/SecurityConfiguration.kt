@@ -1,6 +1,6 @@
-package com.realtime.blog_api.config
+package com.realtime.blog_api.security.configuration
 
-import com.realtime.blog_api.security.CustomUserDetailsService
+import com.realtime.blog_api.security.service.impl.UserDetailsServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -14,7 +14,7 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfiguration(@Autowired private val userDetailsService: CustomUserDetailsService) {
+class SecurityConfiguration(@Autowired private val userDetailsService: UserDetailsServiceImpl) {
 
     @Bean
     fun passwordEncoder(): PasswordEncoder = BCryptPasswordEncoder()
@@ -22,15 +22,15 @@ class SecurityConfiguration(@Autowired private val userDetailsService: CustomUse
     @Bean
     fun authenticationProvider(): AuthenticationProvider {
         val authenticationProvider = DaoAuthenticationProvider()
-        authenticationProvider.setUserDetailsService(userDetailsService)
-        authenticationProvider.setPasswordEncoder(passwordEncoder())
+        authenticationProvider.setUserDetailsService(this.userDetailsService)
+        authenticationProvider.setPasswordEncoder(this.passwordEncoder())
         return authenticationProvider
     }
 
     @Bean
     @Throws(Exception::class)
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain? {
-        http.csrf().disable().authorizeHttpRequests().anyRequest().authenticated().and().httpBasic()
+        http.csrf().disable().authorizeHttpRequests().anyRequest().authenticated().and().httpBasic().and().authenticationProvider(this.authenticationProvider())
         return http.build()
     }
 }
