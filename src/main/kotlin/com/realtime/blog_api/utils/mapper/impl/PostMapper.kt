@@ -1,7 +1,7 @@
 package com.realtime.blog_api.utils.mapper.impl
 
 import com.realtime.blog_api.dto.PostDto
-import com.realtime.blog_api.entities.Post
+import com.realtime.blog_api.entity.Post
 import com.realtime.blog_api.utils.mapper.Mapper
 
 import org.springframework.beans.factory.annotation.Autowired

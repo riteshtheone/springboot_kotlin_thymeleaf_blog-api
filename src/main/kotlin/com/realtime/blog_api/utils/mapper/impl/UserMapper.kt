@@ -1,7 +1,7 @@
 package com.realtime.blog_api.utils.mapper.impl
 
 import com.realtime.blog_api.dto.UserDto
-import com.realtime.blog_api.entities.User
+import com.realtime.blog_api.entity.User
 import com.realtime.blog_api.utils.mapper.Mapper
 import org.springframework.stereotype.Component
 

@@ -1,10 +1,10 @@
-package com.realtime.blog_api.controllers
+package com.realtime.blog_api.controller
 
 import com.realtime.blog_api.dto.PostDto
-import com.realtime.blog_api.constants.AppConstants
-import com.realtime.blog_api.payloads.ApiResponse
-import com.realtime.blog_api.payloads.PostResponse
-import com.realtime.blog_api.services.PostService
+import com.realtime.blog_api.constant.DBConstant
+import com.realtime.blog_api.payload.ApiResponse
+import com.realtime.blog_api.payload.PostResponse
+import com.realtime.blog_api.service.PostService
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -37,10 +37,10 @@ class PostController(@Autowired private val postService: PostService) {
     // GET -> get all post
     @GetMapping("/post/all")
     fun getAllPosts(
-        @RequestParam(value = "pageNumber", defaultValue = AppConstants.PAGE_NUMBER, required = false) pageNumber: Int,
-        @RequestParam(value = "pageSize", defaultValue = AppConstants.PAGE_SIZE, required = false) pageSize: Int,
-        @RequestParam(value = "sortBy", defaultValue = AppConstants.SORT_BY, required = false) sortBy: String,
-        @RequestParam(value = "sortDir", defaultValue = AppConstants.SORT_DIR, required = false) sortDir: String,
+        @RequestParam(value = "pageNumber", defaultValue = DBConstant.PAGE_NUMBER, required = false) pageNumber: Int,
+        @RequestParam(value = "pageSize", defaultValue = DBConstant.PAGE_SIZE, required = false) pageSize: Int,
+        @RequestParam(value = "sortBy", defaultValue = DBConstant.SORT_BY, required = false) sortBy: String,
+        @RequestParam(value = "sortDir", defaultValue = DBConstant.SORT_DIR, required = false) sortDir: String,
         ) : ResponseEntity<PostResponse> = ResponseEntity<PostResponse>(this.postService.getAllPost(pageNumber, pageSize, sortBy, sortDir), HttpStatus.OK)
 
     // get post by user id

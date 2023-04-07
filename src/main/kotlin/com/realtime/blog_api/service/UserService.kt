@@ -1,4 +1,4 @@
-package com.realtime.blog_api.services
+package com.realtime.blog_api.service
 
 import com.realtime.blog_api.dto.UserDto
 

@@ -1,4 +1,4 @@
-package com.realtime.blog_api.entities
+package com.realtime.blog_api.entity
 
 import jakarta.persistence.*
 

@@ -1,10 +1,10 @@
-package com.realtime.blog_api.services.impl
+package com.realtime.blog_api.service.impl
 
 import com.realtime.blog_api.dto.UserDto
 import com.realtime.blog_api.dao.UserRepository
-import com.realtime.blog_api.entities.User
-import com.realtime.blog_api.exceptions.ResourceNotFoundException
-import com.realtime.blog_api.services.UserService
+import com.realtime.blog_api.entity.User
+import com.realtime.blog_api.exception.ResourceNotFoundException
+import com.realtime.blog_api.service.UserService
 import com.realtime.blog_api.utils.mapper.impl.UserMapper
 
 import org.springframework.beans.factory.annotation.Autowired

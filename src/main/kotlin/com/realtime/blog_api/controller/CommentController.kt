@@ -1,8 +1,8 @@
-package com.realtime.blog_api.controllers
+package com.realtime.blog_api.controller
 
 import com.realtime.blog_api.dto.CommentDto
-import com.realtime.blog_api.payloads.ApiResponse
-import com.realtime.blog_api.services.CommentService
+import com.realtime.blog_api.payload.ApiResponse
+import com.realtime.blog_api.service.CommentService
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/api")
 class CommentController(@Autowired private val commentService: CommentService) {
 
-    @PostMapping("/post/{postId}/comment")
-    fun createComment(@RequestBody commentDto: CommentDto, @PathVariable postId: Int): ResponseEntity<CommentDto> = ResponseEntity(this.commentService.createComment(commentDto, postId), HttpStatus.CREATED)
+    @PostMapping("/user/{userId}/post/{postId}/comment")
+    fun createComment(@RequestBody commentDto: CommentDto, @PathVariable postId: Int, @PathVariable userId: Int): ResponseEntity<CommentDto> = ResponseEntity(this.commentService.createComment(commentDto, postId, userId), HttpStatus.CREATED)
 
     @PutMapping("/comment/{commentId}")
     fun updateComment(@RequestBody commentDto: CommentDto, @PathVariable commentId:Int) : ResponseEntity<CommentDto> = ResponseEntity.ok(this.commentService.updateComment(commentDto, commentId))

@@ -1,10 +1,10 @@
-package com.realtime.blog_api.services
+package com.realtime.blog_api.service
 
 import com.realtime.blog_api.dto.CommentDto
 
 interface CommentService {
     //  create
-    fun createComment(commentDto: CommentDto, postId: Int): CommentDto
+    fun createComment(commentDto: CommentDto, postId: Int, userId: Int): CommentDto
 
     //  update
     fun updateComment(commentDto: CommentDto, commentId: Int): CommentDto

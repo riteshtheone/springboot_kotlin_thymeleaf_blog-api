@@ -1,10 +1,10 @@
-package com.realtime.blog_api.services.impl
+package com.realtime.blog_api.service.impl
 
 import com.realtime.blog_api.dao.CategoryRepository
 import com.realtime.blog_api.dto.CategoryDto
-import com.realtime.blog_api.entities.Category
-import com.realtime.blog_api.exceptions.ResourceNotFoundException
-import com.realtime.blog_api.services.CategoryService
+import com.realtime.blog_api.entity.Category
+import com.realtime.blog_api.exception.ResourceNotFoundException
+import com.realtime.blog_api.service.CategoryService
 import com.realtime.blog_api.utils.mapper.impl.CategoryMapper
 
 import org.springframework.beans.factory.annotation.Autowired

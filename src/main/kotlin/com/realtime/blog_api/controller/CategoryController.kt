@@ -1,8 +1,8 @@
-package com.realtime.blog_api.controllers
+package com.realtime.blog_api.controller
 
 import com.realtime.blog_api.dto.CategoryDto
-import com.realtime.blog_api.payloads.ApiResponse
-import com.realtime.blog_api.services.CategoryService
+import com.realtime.blog_api.payload.ApiResponse
+import com.realtime.blog_api.service.CategoryService
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus

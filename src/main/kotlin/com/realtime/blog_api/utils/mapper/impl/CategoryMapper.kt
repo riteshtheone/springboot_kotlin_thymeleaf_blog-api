@@ -1,7 +1,7 @@
 package com.realtime.blog_api.utils.mapper.impl
 
 import com.realtime.blog_api.dto.CategoryDto
-import com.realtime.blog_api.entities.Category
+import com.realtime.blog_api.entity.Category
 import com.realtime.blog_api.utils.mapper.Mapper
 import org.springframework.stereotype.Component
 

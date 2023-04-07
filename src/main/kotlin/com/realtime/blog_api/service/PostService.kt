@@ -1,7 +1,7 @@
-package com.realtime.blog_api.services
+package com.realtime.blog_api.service
 
 import com.realtime.blog_api.dto.PostDto
-import com.realtime.blog_api.payloads.PostResponse
+import com.realtime.blog_api.payload.PostResponse
 
 interface PostService {
 

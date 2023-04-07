@@ -1,4 +1,4 @@
-package com.realtime.blog_api.entities
+package com.realtime.blog_api.entity
 
 import jakarta.persistence.*
 
@@ -8,7 +8,7 @@ data class Comment (
     val id: Int,
 
     @Column(nullable = false)
-    var content: String,
+    var comment: String,
 
 ){
     @ManyToOne @JoinColumn(name = "post_id")

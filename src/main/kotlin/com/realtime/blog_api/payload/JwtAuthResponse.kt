@@ -1,4 +1,4 @@
-package com.realtime.blog_api.payloads
+package com.realtime.blog_api.payload
 
 class JwtAuthResponse {
     var token: String = ""

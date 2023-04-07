@@ -1,8 +1,8 @@
 package com.realtime.blog_api.dao
 
-import com.realtime.blog_api.entities.Comment
-import com.realtime.blog_api.entities.Post
-import com.realtime.blog_api.entities.User
+import com.realtime.blog_api.entity.Comment
+import com.realtime.blog_api.entity.Post
+import com.realtime.blog_api.entity.User
 import org.springframework.data.jpa.repository.JpaRepository
 
 interface CommentRepository : JpaRepository<Comment, Int> {

@@ -1,13 +1,13 @@
-package com.realtime.blog_api.services.impl
+package com.realtime.blog_api.service.impl
 
 import com.realtime.blog_api.dto.PostDto
 import com.realtime.blog_api.dao.CategoryRepository
 import com.realtime.blog_api.dao.PostRepository
 import com.realtime.blog_api.dao.UserRepository
-import com.realtime.blog_api.entities.Post
-import com.realtime.blog_api.exceptions.ResourceNotFoundException
-import com.realtime.blog_api.payloads.PostResponse
-import com.realtime.blog_api.services.PostService
+import com.realtime.blog_api.entity.Post
+import com.realtime.blog_api.exception.ResourceNotFoundException
+import com.realtime.blog_api.payload.PostResponse
+import com.realtime.blog_api.service.PostService
 import com.realtime.blog_api.utils.mapper.impl.PostMapper
 
 import org.springframework.beans.factory.annotation.Autowired

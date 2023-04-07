@@ -1,4 +1,4 @@
-package com.realtime.blog_api.entities
+package com.realtime.blog_api.entity
 
 import jakarta.persistence.*
 
@@ -25,11 +25,11 @@ data class User (
     @OneToMany(mappedBy = "user", cascade = [CascadeType.ALL], fetch = FetchType.LAZY)
     var comments: List<Comment> = ArrayList()
 
-//    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
-//    @JoinTable(
-//        name = "user_roles",
-//        joinColumns = [JoinColumn(name = "user", referencedColumnName = "user_id")],
-//        inverseJoinColumns = [JoinColumn(name = "role", referencedColumnName = "id")]
-//    )
-//    var roles: List<Role>
+    @ManyToMany(cascade = [CascadeType.ALL], fetch = FetchType.EAGER)
+    @JoinTable(
+        name = "user_roles",
+        joinColumns = [JoinColumn(name = "user", referencedColumnName = "user_id")],
+        inverseJoinColumns = [JoinColumn(name = "role", referencedColumnName = "id")]
+    )
+    var roles: List<Role> = ArrayList()
 }

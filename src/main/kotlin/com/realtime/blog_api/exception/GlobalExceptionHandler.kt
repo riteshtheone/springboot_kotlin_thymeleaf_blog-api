@@ -1,6 +1,6 @@
-package com.realtime.blog_api.exceptions
+package com.realtime.blog_api.exception
 
-import com.realtime.blog_api.payloads.ApiResponse
+import com.realtime.blog_api.payload.ApiResponse
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.FieldError
