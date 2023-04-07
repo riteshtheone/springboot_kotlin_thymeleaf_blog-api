@@ -1,20 +1,20 @@
 package com.realtime.blog_api.services
 
-import com.realtime.blog_api.beans.CategoryBean
+import com.realtime.blog_api.dto.CategoryDto
 
 interface CategoryService {
 
     //  create
-    fun createCategory(categoryBean: CategoryBean) : CategoryBean
+    fun createCategory(categoryDto: CategoryDto) : CategoryDto
 
     //  update
-    fun updateCategory(categoryBean: CategoryBean, categoryId:Int) : CategoryBean
+    fun updateCategory(categoryDto: CategoryDto, categoryId:Int) : CategoryDto
 
     // get
-    fun getCategoryById(categoryId:Int) : CategoryBean
+    fun getCategoryById(categoryId:Int) : CategoryDto
 
     //  get all
-    fun getAllCategories() : List<CategoryBean>
+    fun getAllCategories() : List<CategoryDto>
 
     //  delete
     fun deleteCategory(categoryId:Int)

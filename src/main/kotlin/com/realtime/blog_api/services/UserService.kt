@@ -1,20 +1,20 @@
 package com.realtime.blog_api.services
 
-import com.realtime.blog_api.beans.UserBean
+import com.realtime.blog_api.dto.UserDto
 
 interface UserService {
 
     //  create
-    fun createUser(userBean: UserBean): UserBean
+    fun createUser(userDto: UserDto): UserDto
 
     //  update
-    fun updateUser(userBean: UserBean, userId: Int): UserBean
+    fun updateUser(userDto: UserDto, userId: Int): UserDto
 
-    //  get
-    fun getUserById(userId: Int): UserBean
+//    //  get
+    fun getUserById(userId: Int): UserDto
 
     //  get all
-    fun getAllUsers(): List<UserBean>
+    fun getAllUsers(): List<UserDto>
 
     //  delete
     fun deleteUser(userId: Int)

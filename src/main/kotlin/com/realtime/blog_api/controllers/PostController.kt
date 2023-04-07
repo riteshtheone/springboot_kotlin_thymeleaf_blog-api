@@ -1,10 +1,11 @@
 package com.realtime.blog_api.controllers
 
-import com.realtime.blog_api.beans.PostBean
+import com.realtime.blog_api.dto.PostDto
 import com.realtime.blog_api.constants.AppConstants
 import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.payloads.PostResponse
 import com.realtime.blog_api.services.PostService
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -16,11 +17,11 @@ class PostController(@Autowired private val postService: PostService) {
 
     // POST -> create post
     @PostMapping("/user/{userId}/category/{categoryId}/post")
-    fun createPost(@RequestBody postBean : PostBean, @PathVariable userId: Int, @PathVariable categoryId: Int) : ResponseEntity<PostBean> = ResponseEntity<PostBean>(this.postService.createPost(postBean, userId, categoryId), HttpStatus.CREATED)
+    fun createPost(@RequestBody postDto : PostDto, @PathVariable userId: Int, @PathVariable categoryId: Int) : ResponseEntity<PostDto> = ResponseEntity<PostDto>(this.postService.createPost(postDto, userId, categoryId), HttpStatus.CREATED)
 
     // PUT -> update post
     @PutMapping("/post/{postId}")
-    fun updatePost(@RequestBody postBean: PostBean, @PathVariable("postId") postId:Int) : ResponseEntity<PostBean> = ResponseEntity.ok(this.postService.updatePost(postBean, postId))
+    fun updatePost(@RequestBody postDto: PostDto, @PathVariable("postId") postId:Int) : ResponseEntity<PostDto> = ResponseEntity.ok(this.postService.updatePost(postDto, postId))
 
     // DELETE -> delete post
     @DeleteMapping("/post/{postId}")
@@ -31,7 +32,7 @@ class PostController(@Autowired private val postService: PostService) {
 
     //  GET -> get post
     @GetMapping("/post/{postId}")
-    fun getPost(@PathVariable("postId") postId:Int) : ResponseEntity<PostBean> = ResponseEntity<PostBean>(this.postService.getPostById(postId), HttpStatus.OK)
+    fun getPost(@PathVariable("postId") postId:Int) : ResponseEntity<PostDto> = ResponseEntity<PostDto>(this.postService.getPostById(postId), HttpStatus.OK)
 
     // GET -> get all post
     @GetMapping("/post/all")
@@ -44,13 +45,13 @@ class PostController(@Autowired private val postService: PostService) {
 
     // get post by user id
     @GetMapping("/user/{userId}/post")
-    fun getPostByUser(@PathVariable userId: Int): ResponseEntity<List<PostBean>> = ResponseEntity<List<PostBean>>(this.postService.getPostByUser(userId), HttpStatus.OK)
+    fun getPostByUser(@PathVariable userId: Int): ResponseEntity<List<PostDto>> = ResponseEntity<List<PostDto>>(this.postService.getPostByUser(userId), HttpStatus.OK)
 
     // get post by category id
     @GetMapping("/category/{categoryId}/post")
-    fun getPostByCategory(@PathVariable categoryId: Int): ResponseEntity<List<PostBean>> = ResponseEntity<List<PostBean>>(this.postService.getPostByCategory(categoryId), HttpStatus.OK)
+    fun getPostByCategory(@PathVariable categoryId: Int): ResponseEntity<List<PostDto>> = ResponseEntity<List<PostDto>>(this.postService.getPostByCategory(categoryId), HttpStatus.OK)
 
     @GetMapping("/post/search/{keyword}")
-    fun searchByKeyword(@PathVariable keyword: String): ResponseEntity<List<PostBean>> = ResponseEntity<List<PostBean>>(this.postService.searchPosts(keyword), HttpStatus.OK)
+    fun searchByKeyword(@PathVariable keyword: String): ResponseEntity<List<PostDto>> = ResponseEntity<List<PostDto>>(this.postService.searchPosts(keyword), HttpStatus.OK)
 
 }

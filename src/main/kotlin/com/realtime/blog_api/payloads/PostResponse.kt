@@ -1,9 +1,9 @@
 package com.realtime.blog_api.payloads
 
-import com.realtime.blog_api.beans.PostBean
+import com.realtime.blog_api.dto.PostDto
 
 class PostResponse {
-    var content: List<PostBean> = ArrayList()
+    var content: List<PostDto> = ArrayList()
     var pageNumber = 0
     var pageSize: Int = 0
     var totalElements: Long = 0

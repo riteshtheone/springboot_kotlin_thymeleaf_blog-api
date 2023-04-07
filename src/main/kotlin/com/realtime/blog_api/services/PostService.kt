@@ -1,18 +1,18 @@
 package com.realtime.blog_api.services
 
-import com.realtime.blog_api.beans.PostBean
+import com.realtime.blog_api.dto.PostDto
 import com.realtime.blog_api.payloads.PostResponse
 
 interface PostService {
 
     //  create
-    fun createPost(postBean: PostBean, userId: Int, categoryId: Int): PostBean
+    fun createPost(postDto: PostDto, userId: Int, categoryId: Int): PostDto
 
     //  update
-    fun updatePost(postBean: PostBean, postId: Int): PostBean
+    fun updatePost(postDto: PostDto, postId: Int): PostDto
 
     //  get
-    fun getPostById(postId: Int): PostBean
+    fun getPostById(postId: Int): PostDto
 
     //  get all
     fun getAllPost(pageNumber: Int, pageSize: Int, sortBy: String, sortDir: String): PostResponse
@@ -21,12 +21,12 @@ interface PostService {
     fun deletePost(postId: Int)
 
     //  get all posts by category
-    fun getPostByCategory(categoryId: Int): List<PostBean>
+    fun getPostByCategory(categoryId: Int): List<PostDto>
 
     //  get all posts by user
-    fun getPostByUser(userId: Int): List<PostBean>
+    fun getPostByUser(userId: Int): List<PostDto>
 
     //  search posts
-    fun searchPosts(keyword: String): List<PostBean>
+    fun searchPosts(keyword: String): List<PostDto>
 
 }

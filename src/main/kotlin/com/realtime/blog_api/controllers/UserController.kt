@@ -1,6 +1,6 @@
 package com.realtime.blog_api.controllers
 
-import com.realtime.blog_api.beans.UserBean
+import com.realtime.blog_api.dto.UserDto
 import com.realtime.blog_api.payloads.ApiResponse
 import com.realtime.blog_api.services.UserService
 
@@ -24,11 +24,11 @@ class UserController(@Autowired private val userService: UserService) {
 
     // POST -> create user
     @PostMapping("/")
-    fun createUser(@Valid @RequestBody userBean : UserBean) : ResponseEntity<UserBean> = ResponseEntity<UserBean>(this.userService.createUser(userBean), HttpStatus.CREATED)
+    fun createUser(@Valid @RequestBody userDto: UserDto) : ResponseEntity<UserDto> = ResponseEntity<UserDto>(this.userService.createUser(userDto), HttpStatus.CREATED)
 
-    // PUT -> update user
+//     PUT -> update user
     @PutMapping("/{userId}")
-    fun updateUser(@Valid @RequestBody userBean: UserBean, @PathVariable("userId") userId:Int) : ResponseEntity<UserBean> = ResponseEntity.ok(this.userService.updateUser(userBean, userId))
+    fun updateUser(@Valid @RequestBody userDto: UserDto, @PathVariable("userId") userId:Int) : ResponseEntity<UserDto> = ResponseEntity.ok(this.userService.updateUser(userDto, userId))
 
     // DELETE -> delete user
     @DeleteMapping("/{userId}")
@@ -39,10 +39,10 @@ class UserController(@Autowired private val userService: UserService) {
 
     // GET -> get user
     @GetMapping("/{userId}")
-    fun getUser(@PathVariable("userId") userId:Int) : ResponseEntity<UserBean> = ResponseEntity<UserBean>(this.userService.getUserById(userId), HttpStatus.OK)
+    fun getUser(@PathVariable("userId") userId:Int) : ResponseEntity<UserDto> = ResponseEntity<UserDto>(this.userService.getUserById(userId), HttpStatus.OK)
 
     // GET -> get all user
     @GetMapping("/all")
-    fun getAllUsers() : ResponseEntity<List<UserBean>> =  ResponseEntity<List<UserBean>>(this.userService.getAllUsers(), HttpStatus.OK)
+    fun getAllUsers() : ResponseEntity<List<UserDto>> =  ResponseEntity<List<UserDto>>(this.userService.getAllUsers(), HttpStatus.OK)
 
 }

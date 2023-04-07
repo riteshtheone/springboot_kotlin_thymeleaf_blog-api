@@ -1,26 +1,37 @@
 package com.realtime.blog_api.services.impl
 
-import com.realtime.blog_api.beans.CommentBean
+import com.realtime.blog_api.dto.CommentDto
 import com.realtime.blog_api.dao.CommentRepository
 import com.realtime.blog_api.dao.PostRepository
-import com.realtime.blog_api.entities.Comment
 import com.realtime.blog_api.exceptions.ResourceNotFoundException
 import com.realtime.blog_api.services.CommentService
-import org.modelmapper.ModelMapper
+import com.realtime.blog_api.utils.mapper.impl.CommentMapper
+
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
+
+import java.util.stream.Collectors
 
 @Service
 class CommentServiceImpl(
     @Autowired private val commentRepository: CommentRepository,
     @Autowired private val postRepository: PostRepository,
-    @Autowired private val modelMapper: ModelMapper): CommentService {
+    @Autowired private val commentMapper: CommentMapper
+    ): CommentService {
 
-    override fun createComment(commentBean: CommentBean, postId: Int): CommentBean {
+    override fun createComment(commentDto: CommentDto, postId: Int): CommentDto {
         val post = this.postRepository.findById(postId).orElseThrow { ResourceNotFoundException("Post", "post id", postId) }
-        val comment = this.modelMapper.map(commentBean, Comment::class.java)
-        comment.post = post
-        return this.modelMapper.map(this.commentRepository.save(comment), CommentBean::class.java)
+        return this.commentMapper.toDomain(this.commentRepository.save(this.commentMapper.toEntity(commentDto).apply {
+            this.post = post
+            this.user = post.user
+        }))
     }
+    override fun updateComment(commentDto: CommentDto, commentId: Int): CommentDto = this.commentMapper.toDomain(this.commentRepository.save(this.commentRepository.findById(commentId).orElseThrow { ResourceNotFoundException("Comment", "comment id", commentId) }.apply {
+        this.content = commentDto.content
+    }))
+    override fun getCommentById(commentId: Int): CommentDto = this.commentMapper.toDomain(this.commentRepository.findById(commentId).orElseThrow { ResourceNotFoundException("Comment", "comment id", commentId) })
     override fun deleteComment(commentId: Int) = this.commentRepository.delete(this.commentRepository.findById(commentId).orElseThrow { ResourceNotFoundException("Comment", "comment id", commentId) })
+    override fun getCommentByPost(postId: Int): List<CommentDto> = this.commentRepository.findByPost(this.postRepository.findById(postId).orElseThrow { ResourceNotFoundException("Post", "post id", postId) }).stream().map { comment -> this.commentMapper.toDomain(comment) }.collect(Collectors.toList())
+    override fun getCommentByUser(userId: Int): List<CommentDto> = this.commentRepository.findByPost(this.postRepository.findById(userId).orElseThrow { ResourceNotFoundException("User", "user id", userId) }).stream().map { comment -> this.commentMapper.toDomain(comment) }.collect(Collectors.toList())
+    override fun getAllComment(): List<CommentDto> = this.commentRepository.findAll().stream().map { comment -> this.commentMapper.toDomain(comment) }.collect(Collectors.toList())
 }

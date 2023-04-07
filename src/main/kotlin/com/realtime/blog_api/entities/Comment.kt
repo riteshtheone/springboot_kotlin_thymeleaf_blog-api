@@ -2,22 +2,18 @@ package com.realtime.blog_api.entities
 
 import jakarta.persistence.*
 
-@Entity
-@Table(name = "comments")
-class Comment {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
-    val commentId: Int = 0
+@Entity @Table(name = "comments")
+data class Comment (
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "comment_id")
+    val id: Int,
 
     @Column(nullable = false)
-    var content: String= ""
+    var content: String,
 
-    @ManyToOne
-    @JoinColumn(name = "post_id")
-    var post: Post = Post()
+){
+    @ManyToOne @JoinColumn(name = "post_id")
+    lateinit var post: Post
 
-//    @ManyToMany
-//    @JoinColumn(name = "user_id")
-//    var user: User = User()
+    @ManyToOne @JoinColumn(name = "user_id")
+    lateinit var user: User
 }
