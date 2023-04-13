@@ -21,12 +21,10 @@ class CommentServiceImpl(
     @Autowired private val commentMapper: CommentMapper
     ): CommentService {
 
-    override fun createComment(commentDto: CommentDto, postId: Int, userId: Int): CommentDto {
-        return this.commentMapper.toDomain(this.commentRepository.save(this.commentMapper.toEntity(commentDto).apply {
-            this.post = postRepository.findById(postId).orElseThrow { ResourceNotFoundException("Post", "post id", postId) }
-            this.user = userRepository.findById(userId).orElseThrow { ResourceNotFoundException("User", "user id", postId) }
-        }))
-    }
+    override fun createComment(commentDto: CommentDto, postId: Int, userId: Int): CommentDto = this.commentMapper.toDomain(this.commentRepository.save(this.commentMapper.toEntity(commentDto).apply {
+        this.post = postRepository.findById(postId).orElseThrow { ResourceNotFoundException("Post", "post id", postId) }
+        this.user = userRepository.findById(userId).orElseThrow { ResourceNotFoundException("User", "user id", postId) }
+    }))
     override fun updateComment(commentDto: CommentDto, commentId: Int): CommentDto = this.commentMapper.toDomain(this.commentRepository.save(this.commentRepository.findById(commentId).orElseThrow { ResourceNotFoundException("Comment", "comment id", commentId) }.apply {
         this.comment = commentDto.comment
     }))

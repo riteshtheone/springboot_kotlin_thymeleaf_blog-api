@@ -1,7 +1,7 @@
 //package com.realtime.blog_api.security.service.impl
 //
-//import com.realtime.blog_api.entities.Role
-//import com.realtime.blog_api.entities.User
+//import com.realtime.blog_api.entity.Role
+//import com.realtime.blog_api.entity.User
 //import org.springframework.security.core.GrantedAuthority
 //import org.springframework.security.core.authority.SimpleGrantedAuthority
 //import org.springframework.security.core.userdetails.UserDetails
